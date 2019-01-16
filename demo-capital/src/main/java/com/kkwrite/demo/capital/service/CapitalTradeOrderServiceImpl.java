@@ -103,10 +103,10 @@ public class CapitalTradeOrderServiceImpl implements CapitalTradeOrderService {
             foundTradeOrder.cancel();
             // 2. 更新贸易数据记录状态为 CANCEL
             tradeOrderRepository.update(foundTradeOrder);
-            // 3. 回复付款人的资金账户金额
-            CapCapitalAccountDO capitalAccountTO = capitalAccountRepository.findByUserId(tradeOrderDTO.getSelfUserId());
-            capitalAccountTO.cancelTransfer(tradeOrderDTO.getAmount());
-            capitalAccountRepository.update(capitalAccountTO);
+            // 3. 回恢复付款人的资金账户金额
+            CapCapitalAccountDO capitalAccountFrom = capitalAccountRepository.findByUserId(tradeOrderDTO.getSelfUserId());
+            capitalAccountFrom.cancelTransfer(tradeOrderDTO.getAmount());
+            capitalAccountRepository.update(capitalAccountFrom);
         }
     }
 
