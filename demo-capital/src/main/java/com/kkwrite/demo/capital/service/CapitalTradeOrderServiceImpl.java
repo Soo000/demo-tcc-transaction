@@ -35,7 +35,7 @@ public class CapitalTradeOrderServiceImpl implements CapitalTradeOrderService {
     @Compensable(confirmMethod = "confirmRecord", cancelMethod = "cancelRecord", transactionContextEditor = DubboTransactionContextEditor.class)
     @Transactional
     public String record(CapitalTradeOrderDTO tradeOrderDTO) {
-        logger.info("资金账户 try 操作，执行 CapitalTradeOrderServiceImpl.record() 方法");
+        System.out.println("资金账户 try 操作");
 
         // 1.根据贸易编号查询贸易记录
         TradeOrderDO foundTradeOrder = tradeOrderRepository.findByMerchantOrderNo(tradeOrderDTO.getMerchantOrderNo());
@@ -70,7 +70,7 @@ public class CapitalTradeOrderServiceImpl implements CapitalTradeOrderService {
      */
     @Transactional
     public void confirmRecord(CapitalTradeOrderDTO tradeOrderDTO) {
-        logger.info("资金账户 confirm 操作，执行 CapitalTradeOrderServiceImpl.confirmRecord() 方法");
+        System.out.println("资金账户 confirm 操作");
 
         // 1. 根据贸易编号查询贸易记录
         TradeOrderDO foundTradeOrder = tradeOrderRepository.findByMerchantOrderNo(tradeOrderDTO.getMerchantOrderNo());
@@ -93,7 +93,7 @@ public class CapitalTradeOrderServiceImpl implements CapitalTradeOrderService {
      */
     @Transactional
     public void cancelRecord(CapitalTradeOrderDTO tradeOrderDTO) {
-        logger.info("资金账户 cancel 操作，执行 CapitalTradeOrderServiceImpl.cancelRecord() 方法");
+        System.out.println("资金账户 cancel 操作");
 
         // 1. 根据贸易编号查询贸易记录
         TradeOrderDO foundTradeOrder = tradeOrderRepository.findByMerchantOrderNo(tradeOrderDTO.getMerchantOrderNo());

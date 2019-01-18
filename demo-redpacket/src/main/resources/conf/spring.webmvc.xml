@@ -8,6 +8,6 @@
             http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd">
 	
 	<!-- 组件扫描 -->
-	<context:component-scan base-package="com.kkwrite.demo.product.service.controller"></context:component-scan>
+	<context:component-scan base-package="com.kkwrite.demo.product.service.controller" />
 	
 </beans>

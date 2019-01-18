@@ -88,12 +88,6 @@
                 <artifactId>mybatis</artifactId>
                 <version>3.2.8</version>
             </dependency>
-            <!-- mysql -->
-            <dependency>
-                <groupId>mysql</groupId>
-                <artifactId>mysql-connector-java</artifactId>
-                <version>5.1.33</version>
-            </dependency>
             <!-- tcc-transaction 依赖 -->
             <dependency>
                 <groupId>org.mengyun</groupId>
@@ -119,6 +113,17 @@
                 <groupId>commons-dbcp</groupId>
                 <artifactId>commons-dbcp</artifactId>
                 <version>1.4</version>
+            </dependency>
+            <dependency>
+                <groupId>com.mchange</groupId>
+                <artifactId>c3p0</artifactId>
+                <version>0.9.5-pre10</version>
+            </dependency>
+            <!-- mysql -->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>5.1.33</version>
             </dependency>
             <dependency>
                 <groupId>log4j</groupId>

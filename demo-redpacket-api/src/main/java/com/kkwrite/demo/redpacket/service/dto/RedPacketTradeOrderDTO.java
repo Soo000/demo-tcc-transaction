@@ -7,20 +7,11 @@ public class RedPacketTradeOrderDTO implements Serializable {
 
     private static final long serialVersionUID = -4760592958369069673L;
 
-    private long id;
     private long selfUserId;
     private long oppositeUserId;
     private String merchantOrderNo;
     private BigDecimal amount;
     private String orderTitle;
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public long getSelfUserId() {
         return selfUserId;

@@ -56,7 +56,7 @@ public class OrderDO implements Serializable {
     }
 
     public void cancel() {
-        this.status = "CANCEL";
+        this.status = "PAY_FAILED";
     }
 
     public void updateVersion() {

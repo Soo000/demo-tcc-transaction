@@ -43,7 +43,7 @@ public class PaymentService {
     @Compensable(confirmMethod = "confirmMakePayment", cancelMethod = "cancelMakePayment", asyncConfirm = true)
     public void makePayment(OrderDO orderDO, BigDecimal redPacketPayAmount, BigDecimal capitalPayAmount) {
         String operTime = DateFormatUtils.format(Calendar.getInstance(), "yyyy-MM-dd HH:mm:ss");
-        logger.info("在 {} 进行了订单支付服务 try 操作", operTime);
+        System.out.println("进行了订单支付服务 try 操作 " + operTime);
         // 1. 判断订单状态是不是 "DRAFT"，如果不是，意味着该订单的支付方法被被别的地方调用了，忽略本次调用
         if ("DRAFT".equals(orderDO.getStatus())) {
             // 设置订单中红包支付金额，资金支付金额，订单状态为 "PAYING"
@@ -56,8 +56,9 @@ public class PaymentService {
                 //ignore the concurrently update order exception, ensure idempotency.
             }
         }
-
+        // 资金 资金执行了confirm方法
         String capitalPayResult = capitalTradeOrderService.record(buildCapitalTradeOrderDTO(orderDO));
+        // 红包 红包执行了cancel 方法
         String redPacketPayResult = redPacketTradeOrderService.record(buildRedPacketTradeOrderDTO(orderDO));
     }
 
@@ -69,7 +70,7 @@ public class PaymentService {
      */
     public void confirmMakePayment(OrderDO orderDO, BigDecimal redPacketPayAmount, BigDecimal capitalPayAmount) {
         String operTime = DateFormatUtils.format(Calendar.getInstance(), "yyyy-MM-dd HH:mm:ss");
-        logger.info("在 {} 进行了订单支付服务 confrim 操作", operTime);
+        System.out.println("进行了订单支付服务 confrim 操作 " + operTime);
 
         // 根据 贸易编号 查找订单
         OrderDO founderOrderDO = orderRepository.findByMerchantOrderNo(orderDO.getMerchantOrderNo());
@@ -91,7 +92,7 @@ public class PaymentService {
      */
     public void cancelMakePayment(OrderDO orderDO, BigDecimal redPacketPayAmount, BigDecimal capitalPayAmount) {
         String operTime = DateFormatUtils.format(Calendar.getInstance(), "yyyy-MM-dd HH:mm:ss");
-        logger.info("在 {} 进行了订单支付服务 cancel 操作", operTime);
+        System.out.println("进行了订单支付服务 cancel 操作 " + operTime);
 
         // 根据 贸易编号 查找订单
         OrderDO founderOrderDO = orderRepository.findByMerchantOrderNo(orderDO.getMerchantOrderNo());

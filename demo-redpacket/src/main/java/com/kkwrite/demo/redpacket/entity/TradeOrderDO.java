@@ -26,32 +26,16 @@ public class TradeOrderDO {
         return id;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
-
     public long getSelfUserId() {
         return selfUserId;
-    }
-
-    public void setSelfUserId(long selfUserId) {
-        this.selfUserId = selfUserId;
     }
 
     public long getOppositeUserId() {
         return oppositeUserId;
     }
 
-    public void setOppositeUserId(long oppositeUserId) {
-        this.oppositeUserId = oppositeUserId;
-    }
-
     public String getMerchantOrderNo() {
         return merchantOrderNo;
-    }
-
-    public void setMerchantOrderNo(String merchantOrderNo) {
-        this.merchantOrderNo = merchantOrderNo;
     }
 
     public BigDecimal getAmount() {
@@ -66,16 +50,8 @@ public class TradeOrderDO {
         return status;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
     public long getVersion() {
         return version;
-    }
-
-    public void setVersion(long version) {
-        this.version = version;
     }
 
     public void updateVersion() {

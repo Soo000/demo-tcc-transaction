@@ -38,7 +38,7 @@ public class RedPacketTradeOrderServiceImpl implements RedPacketTradeOrderServic
     @Transactional
     public String record(RedPacketTradeOrderDTO tradeOrderDTO) {
         String callTime = DateFormatUtils.format(Calendar.getInstance(), "yyyy-MM-dd HH:mm:ss");
-        logger.info("在 {} 进行红包账户 try 操作", callTime);
+        System.out.println("进行红包账户 try 操作 " + callTime);
 
         // 1. 查询贸易数据
         TradeOrderDO foundTradeOrder = traderOrderRepository.findByMerchantOrderNo(tradeOrderDTO.getMerchantOrderNo());
@@ -73,7 +73,7 @@ public class RedPacketTradeOrderServiceImpl implements RedPacketTradeOrderServic
     @Transactional
     public void confirmRecord(RedPacketTradeOrderDTO tradeOrderDTO) {
         String callTime = DateFormatUtils.format(Calendar.getInstance(), "yyyy-MM-dd HH:mm:ss");
-        logger.info("在 {} 进行红包账户 confrim 操作", callTime);
+        System.out.println("进行红包账户 confrim 操作 " + callTime);
 
         // 1. 查询贸易数据
         TradeOrderDO foundTradeOrder = traderOrderRepository.findByMerchantOrderNo(tradeOrderDTO.getMerchantOrderNo());
@@ -97,13 +97,12 @@ public class RedPacketTradeOrderServiceImpl implements RedPacketTradeOrderServic
     @Transactional
     public void cancelRecord(RedPacketTradeOrderDTO tradeOrderDTO) {
         String callTime = DateFormatUtils.format(Calendar.getInstance(), "yyyy-MM-dd HH:mm:ss");
-        logger.info("在 {} 进行红包账户 cancel 操作", callTime);
+        System.out.println("进行红包账户 cancel 操作 " + callTime);
 
         // 1. 查询贸易数据
         TradeOrderDO foundTradeOrder = traderOrderRepository.findByMerchantOrderNo(tradeOrderDTO.getMerchantOrderNo());
         // 判断如果红包贸易数据存在且是 “DRAFT”
-        if (foundTradeOrder != null &&
-                "DRAFT".equals(foundTradeOrder.getStatus())) {
+        if (foundTradeOrder != null && "DRAFT".equals(foundTradeOrder.getStatus())) {
             // 2. 修改贸易数据的状态值为 "CANCEL"
             foundTradeOrder.cancel();
             traderOrderRepository.update(foundTradeOrder);

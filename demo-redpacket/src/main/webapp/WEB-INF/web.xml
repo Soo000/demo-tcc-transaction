@@ -3,14 +3,18 @@
         "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
-    <display-name>Archetype Created Web Application</display-name>
+    <display-name>demo-redpacket</display-name>
+
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>
             classpath:conf/spring.xml,
+            classpath:conf/spring.datasource.xml,
             classpath:conf/spring.dubbo.xml,
-            classpath:conf/spring.mybatis.xml,
-            classpath:conf/tcc-transaction.xml
+            classpath:conf/spring.tcc-transaction.xml,
+            classpath:conf/spring.dao.xml,
+            classpath:conf/tcc-transaction.xml,
+            classpath:conf/tcc-transaction-dubbo.xml
         </param-value>
     </context-param>
 
